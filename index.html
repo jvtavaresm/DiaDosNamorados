@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dia dos Namorados</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="head">
+      <h2>Feliz dia dos namorados!!</h2>
+      <p>Meu amooor, o dia mais esperado chegou, essa é uma pequena parte do que preparei pra você, é bem simples mas tudo foi feito com muito amor, espero que goste 💙</p>
+    </div>
+
+    <!-- Vídeo com botão de iniciar -->
+    <div class="video-container">
+      <video id="meuVideo" loop playsinline>
+        <source src="mp4/video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+
+      <button id="iniciarVideo" class="botao-play">▶ Clique aqui</button>
+
+      <div id="volumeWrapper" style="display: none;">
+        <label for="volumeControl">Volume do vídeo:</label>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.4">
+      </div>
+
+      <div>
+        <p>Esse contador irá marcar com exatidão o tempo do nosso relacionamento. Neste momento fazem:</p>
+      </div>
+    </div>
+
+    <!-- Contador progressivo -->
+    <div id="datetime">Carregando contador...</div>
+
+    <div class="texto">
+      <p>É amor, pra quem não queria nada, aqui estou eu, sem nem conseguir imaginar um futuro no qual eu não esteja ao teu lado e viver essa experiência chamada “vida” ao teu lado, ta sendo a melhor coisa que me aconteceu nos últimos anos, mesmo que estejamos a pouco tempos juntos, parece que nossos espíritos já se conhecem de longa data. Portanto, esse presente é uma simples lembrança do meu amor por você, por fim, te reafirmo mais uma vez, que te amo demais e é você quem eu escolhi pra estar ao meu lado durante toda a minha vida, mais uma vez, repetitivamente, amo você 💙.</p>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      const startDate = new Date('2025-05-09T20:00:00');
+
+      function updateProgressiveCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        if (diff < 0) {
+          document.getElementById("datetime").textContent = "Ainda não começou!";
+          return;
+        }
+
+        const msInDay = 1000 * 60 * 60 * 24;
+        const msInYear = msInDay * 365.25;
+        const msInMonth = msInDay * 30.44;
+
+        const years = Math.floor(diff / msInYear);
+        const months = Math.floor((diff % msInYear) / msInMonth);
+        const days = Math.floor((diff % msInMonth) / msInDay);
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("datetime").textContent =
+          `Passaram-se ${years} ano(s), ${months} mês(es), ${days} dia(s), ${hours}h ${minutes}m ${seconds}s desde que você disse SIM 💙`;
+      }
+
+      setInterval(updateProgressiveCounter, 1000);
+      updateProgressiveCounter();
+
+      // Vídeo com som ao clicar
+      const video = document.getElementById("meuVideo");
+      const iniciarBtn = document.getElementById("iniciarVideo");
+      const volumeControl = document.getElementById("volumeControl");
+      const volumeWrapper = document.getElementById("volumeWrapper");
+
+      iniciarBtn.addEventListener("click", () => {
+        video.muted = false;
+        video.volume = volumeControl.value;
+        video.play();
+        iniciarBtn.style.display = "none";
+        volumeWrapper.style.display = "block";
+      });
+
+      volumeControl.addEventListener("input", () => {
+        video.volume = volumeControl.value;
+      });
+    </script>
+  </div>
+</body>
+</html>
