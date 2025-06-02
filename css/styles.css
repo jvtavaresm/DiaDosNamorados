@@ -1,0 +1,53 @@
+  html {
+      text-align: center;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+    }
+    .head {
+      padding-top: 20px;
+    }
+    #datetime {
+      padding: 20px;
+      border: #ffffff dashed 1px;
+      margin-left: 70px;
+      margin-right: 70px;
+    }
+    .container {
+      background-color: #836FFF;
+      background-position: center;
+      width: 700px;
+      position: relative;
+      margin: auto;
+      padding-bottom: 20px;
+    }
+    .texto {
+      padding: 20px;
+    }
+    .video-container {
+      position: relative;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      padding: 10px;
+    }
+    .botao-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffffcc;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+    .botao-play:hover {
+      background-color: #eee;
+    }
+    #volumeWrapper {
+      margin-top: 10px;
+    }
